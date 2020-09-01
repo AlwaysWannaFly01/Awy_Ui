@@ -24,6 +24,7 @@
       pointer-events: none;
     }
   }
+
 }
 
 .btn-lg {
@@ -62,6 +63,7 @@
     color: $link-hover-decoration;
     box-shadow: none;
   }
+
   &:disabled,
   &.disabled {
     color: $btn-link-disabled-color;

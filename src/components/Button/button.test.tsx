@@ -9,7 +9,7 @@ const defaultProps = {
 const testProps: ButtonProps = {
     btnType: ButtonType.Primary,
     size: ButtonSize.Large,
-    className: 'asd'
+    className: 'asd222'
 }
 
 const disabledProps: ButtonProps = {
@@ -56,7 +56,7 @@ describe('test Button component', () => {
         const element = wrapper.getByText('Nice')
         expect(element).toBeInTheDocument()
 
-        expect(element).toHaveClass('btn-primary btn-lg asd')
+        expect(element).toHaveClass('btn-primary btn-lg asd222')
     })
 
     it('should render a link wehen btnType  equals link and href is provided', () => {
