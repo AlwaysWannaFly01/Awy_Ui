@@ -3,11 +3,14 @@ import Button, { ButtonSize, ButtonType } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <FontAwesomeIcon icon={faCoffee} size="lg"></FontAwesomeIcon>
         <Menu
           defaultIndex="0"
           onSelect={(index) => {
@@ -25,17 +28,6 @@ const App: React.FC = () => {
           <MenuItem>link3</MenuItem>
         </Menu>
 
-        {/*<Menu defaultIndex={0} mode="vertical">
-                    <MenuItem index={0}>
-                        link1
-                    </MenuItem>
-                    <MenuItem index={1} disabled>
-                        link2
-                    </MenuItem>
-                    <MenuItem index={2}>
-                        link3
-                    </MenuItem>
-                </Menu>*/}
         <Button
           onClick={(e) => {
             e.preventDefault();
