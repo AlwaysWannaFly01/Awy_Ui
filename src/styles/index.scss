@@ -1,5 +1,5 @@
 //config
-@import "variables";/*导入时不用加下划线*/
+@import "variables"; /*导入时不用加下划线*/
 
 //layout
 @import "reboot";
@@ -12,3 +12,6 @@
 
 //menu
 @import "../components/Menu/style";
+
+//icon
+@import "../components/Icon/style";

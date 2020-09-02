@@ -4,13 +4,16 @@ import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons"; // 添加所有的图标
+import Icon from "./components/Icon/icon";
+library.add(fas);
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <FontAwesomeIcon icon={faCoffee} size="lg"></FontAwesomeIcon>
+        <Icon icon="arrow-down" theme="primary" size="10x"></Icon>
         <Menu
           defaultIndex="0"
           onSelect={(index) => {
