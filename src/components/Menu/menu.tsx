@@ -27,7 +27,8 @@ const Menu: React.FC<MenuProps> = props => {
     const [currentActive, setActive] = useState(defaultIndex)
 
     const classes = classNames('awy-menu', className, {
-        'menu-vertical': mode === 'vertical'
+        'menu-vertical': mode === 'vertical',
+        'menu-horizontal': mode !== 'vertical'
     })
 
     const handleClick = (index: number) => {
@@ -45,7 +46,7 @@ const Menu: React.FC<MenuProps> = props => {
         return React.Children.map(children, (child, index) => {
             const childElement = child as React.FunctionComponentElement<MenuItemProps>
             const {displayName} = childElement.type
-            if (displayName === 'MenuItem') {
+            if (displayName === 'MenuItem' ||displayName === 'SubMenu') {
                 /*以element元素为样板克隆并返回新的React元素,第二个参数为想要复制的属性*/
                 return React.cloneElement(childElement, {
                     index

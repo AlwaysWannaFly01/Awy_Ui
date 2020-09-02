@@ -2,24 +2,33 @@ import React from 'react'
 import Button, {ButtonSize, ButtonType} from './components/Button/button'
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
-
+import SubMenu from "./components/Menu/subMenu";
 const App: React.FC = () => {
     return (
         <div className="App">
             <header className="App-header">
                 <Menu defaultIndex={0} onSelect={(index) => {
-                    alert(index)
-                }}>
-                    <MenuItem index={0}>
+                    // alert(index)
+                }} mode="vertical">
+                    <MenuItem>
                         link1
                     </MenuItem>
-                    <MenuItem index={1} disabled>
+                    <MenuItem  disabled>
                         link2
                     </MenuItem>
-                    <MenuItem index={2}>
+                    <SubMenu title='dropdown'>
+                        <MenuItem>
+                            dropdown1
+                        </MenuItem>
+                        <MenuItem>
+                            dropdown2
+                        </MenuItem>
+                    </SubMenu>
+                    <MenuItem>
                         link3
                     </MenuItem>
                 </Menu>
+
 
                 {/*<Menu defaultIndex={0} mode="vertical">
                     <MenuItem index={0}>
