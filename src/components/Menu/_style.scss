@@ -50,6 +50,7 @@
   }
 
   .awy-submenu {
+    display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -63,6 +64,9 @@
       &.is-active, &:hover {
         color: $menu-item-active-color !important;
       }
+    }
+    &.menu-opened{
+      display: block;
     }
   }
 }

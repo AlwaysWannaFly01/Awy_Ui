@@ -16,7 +16,8 @@ export interface MenuProps {
 
 interface IMenuContext {
     index: number;
-    onSelect?: SelectedCallback
+    onSelect?: SelectedCallback,
+    mode?: MenuMode
 }
 
 export const MenuContext = createContext<IMenuContext>({index: 0})
@@ -40,13 +41,14 @@ const Menu: React.FC<MenuProps> = props => {
     }
     const passedContext: IMenuContext = {
         index: currentActive ? currentActive : 0,
-        onSelect: handleClick
+        onSelect: handleClick,
+        mode: mode
     }
     const renderChildren = () => {
         return React.Children.map(children, (child, index) => {
             const childElement = child as React.FunctionComponentElement<MenuItemProps>
             const {displayName} = childElement.type
-            if (displayName === 'MenuItem' ||displayName === 'SubMenu') {
+            if (displayName === 'MenuItem' || displayName === 'SubMenu') {
                 /*以element元素为样板克隆并返回新的React元素,第二个参数为想要复制的属性*/
                 return React.cloneElement(childElement, {
                     index
