@@ -7,7 +7,7 @@
   border-bottom: $menu-border-width solid $menu-border-color;
   box-shadow: $menu-box-shadow;
 
-  >.menu-item {
+  > .menu-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
     cursor: pointer;
     transition: $menu-transition;
@@ -23,9 +23,11 @@
       cursor: none;
     }
 
-    &.is-active, &:hover {
+    &.is-active,
+    &:hover {
       color: $menu-item-active-color;
-      border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+      border-bottom: $menu-item-active-border-width solid
+        $menu-item-active-color;
     }
   }
 
@@ -38,14 +40,25 @@
     }
 
     .arrow-icon {
-      transition: transform .25s ease-in-out;
-      margin-left: 3px;
+      transition: transform 0.25s ease-in-out;
+      margin-left: 5px;
     }
 
     &:hover {
       .arrow-icon {
         transform: rotate(180deg);
       }
+    }
+  }
+
+  .is-vertical {
+    .arrow-icon {
+      transform: rotate(0deg) !important;
+    }
+  }
+  .is-vertical.is-opened {
+    .arrow-icon {
+      transform: rotate(180deg) !important;
     }
   }
 
@@ -61,11 +74,13 @@
       transition: $menu-transition;
       color: $body-color;
 
-      &.is-active, &:hover {
+      &.is-active,
+      &:hover {
         color: $menu-item-active-color !important;
       }
     }
-    &.menu-opened{
+
+    &.menu-opened {
       display: block;
     }
   }
@@ -92,13 +107,13 @@
   border-bottom: 0;
   border-right: $menu-border-width solid $menu-border-color;
 
-  >.menu-item {
+  > .menu-item {
     border-left: $menu-item-active-border-width solid transparent;
 
-    &.is-active, &:hover {
+    &.is-active,
+    &:hover {
       border-bottom: 0;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }
-
 }
