@@ -62,7 +62,7 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, children, classnName}) =
         })
 
         return (
-            <ul className={subMenuClasses}>
+            <ul className={subMenuClasses} data-testid='vertical-test'>
                 {childrenComponent}
             </ul>
         )
