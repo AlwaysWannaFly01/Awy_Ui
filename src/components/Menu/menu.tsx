@@ -4,27 +4,29 @@ import {MenuItemProps} from './menuItem'
 
 type MenuMode = 'horizontal' | 'vertical';
 
-type SelectedCallback = (selectedIndex: number) => void
+type SelectedCallback = (selectedIndex: string) => void
 
 export interface MenuProps {
-    defaultIndex?: number,
+    defaultIndex?: string,
     className?: string,
     mode?: MenuMode;
     style?: React.CSSProperties; //加自定义的style
-    onSelect?: SelectedCallback
+    onSelect?: SelectedCallback,
+    defaultOpenSubMenus?: string[]
 }
 
 interface IMenuContext {
-    index: number;
+    index: string;
     onSelect?: SelectedCallback,
-    mode?: MenuMode
+    mode?: MenuMode,
+    defaultOpenSubMenus?: string[]
 }
 
-export const MenuContext = createContext<IMenuContext>({index: 0})
+export const MenuContext = createContext<IMenuContext>({index: '0'})
 
 const Menu: React.FC<MenuProps> = props => {
     // console.log(props)
-    const {className, mode, style, children, defaultIndex, onSelect} = props
+    const {className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus} = props
     const [currentActive, setActive] = useState(defaultIndex)
 
     const classes = classNames('awy-menu', className, {
@@ -32,7 +34,7 @@ const Menu: React.FC<MenuProps> = props => {
         'menu-horizontal': mode !== 'vertical'
     })
 
-    const handleClick = (index: number) => {
+    const handleClick = (index: string) => {
         console.log(index)
         setActive(index);
         if (onSelect) {
@@ -40,9 +42,10 @@ const Menu: React.FC<MenuProps> = props => {
         }
     }
     const passedContext: IMenuContext = {
-        index: currentActive ? currentActive : 0,
+        index: currentActive ? currentActive : '0',
         onSelect: handleClick,
-        mode: mode
+        mode,
+        defaultOpenSubMenus
     }
     const renderChildren = () => {
         return React.Children.map(children, (child, index) => {
@@ -51,7 +54,7 @@ const Menu: React.FC<MenuProps> = props => {
             if (displayName === 'MenuItem' || displayName === 'SubMenu') {
                 /*以element元素为样板克隆并返回新的React元素,第二个参数为想要复制的属性*/
                 return React.cloneElement(childElement, {
-                    index
+                    index: index.toString()
                 })
             } else {
                 console.error('Warning:Mneu has a child which is not a MenuItem component')
@@ -68,8 +71,9 @@ const Menu: React.FC<MenuProps> = props => {
 }
 
 Menu.defaultProps = {
-    defaultIndex: 0,
-    mode: 'horizontal'
+    defaultIndex: '0',
+    mode: 'horizontal',
+    defaultOpenSubMenus: []
 }
 
 export default Menu;
